@@ -14,7 +14,7 @@ import { Routes } from '@interfaces/routes.interface'
 import errorMiddleware from '@middlewares/error.middleware'
 import { logger, stream } from '@utils/logger'
 import { auth } from 'express-openid-connect'
-import { authConfig } from './config/index copy'
+import { authConfig } from './config/auth'
 
 class App {
   public app: express.Application
