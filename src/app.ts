@@ -13,6 +13,8 @@ import { dbConnection } from '@databases'
 import { Routes } from '@interfaces/routes.interface'
 import errorMiddleware from '@middlewares/error.middleware'
 import { logger, stream } from '@utils/logger'
+import { auth } from 'express-openid-connect'
+import { authConfig } from './config/index copy'
 
 class App {
   public app: express.Application
@@ -53,6 +55,7 @@ class App {
   }
 
   private initializeMiddlewares() {
+    this.app.use(auth(authConfig))
     this.app.use(morgan(LOG_FORMAT, { stream }))
     this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }))
     this.app.use(hpp())
